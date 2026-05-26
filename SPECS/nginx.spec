@@ -41,7 +41,7 @@
 Name:                 nginx
 Epoch:                2
 Version:              1.20.1
-Release:              22%{?dist}.3
+Release:              22.1%{?dist}.3
 
 Summary:              A high performance web server and reverse proxy server
 # BSD License (two clause)
@@ -113,6 +113,9 @@ Patch12:              0012-CVE-2022-41741-and-CVE-2022-41742-fix.patch
 
 # upstream patch - https://issues.redhat.com/browse/RHEL-6786
 Patch13:              0013-SSL-use-of-the-SSL_OP_IGNORE_UNEXPECTED_EOF-option.patch
+
+Patch1001:		CVE-2026-42945.patch
+Patch1002:		CVE-2026-9256.patch
 
 BuildRequires:        make
 BuildRequires:        gcc
@@ -623,6 +626,9 @@ fi
 
 
 %changelog
+* Tue May 26 2026 Pratham Patel <ppatel@ciq.com> - 1.20.1-22.1.3
+- Fix CVE-2026-42945 and CVE-2026-9256
+
 * Tue Jun 24 2025 Release Engineering <releng@rockylinux.org> - 1.20.1-22
 - Debrand default pages
 
