@@ -41,7 +41,7 @@
 Name:                 nginx
 Epoch:                2
 Version:              1.20.1
-Release:              22.1%{?dist}.3
+Release:        22.2%{?dist}.3
 
 Summary:              A high performance web server and reverse proxy server
 # BSD License (two clause)
@@ -116,6 +116,14 @@ Patch13:              0013-SSL-use-of-the-SSL_OP_IGNORE_UNEXPECTED_EOF-option.pa
 
 Patch1001:		CVE-2026-42945.patch
 Patch1002:		CVE-2026-9256.patch
+# CVE-2026-1642 — upstream backport
+Patch1003: nginx-1.20.1-CVE-2026-1642.patch
+# CVE-2026-27654 — upstream backport
+Patch1004: nginx-1.20.1-CVE-2026-27654.patch
+# CVE-2026-27651 — upstream backport
+Patch1005: nginx-1.20.1-CVE-2026-27651.patch
+# CVE-2026-27784 — upstream backport
+Patch1006: nginx-1.20.1-CVE-2026-27784.patch
 
 BuildRequires:        make
 BuildRequires:        gcc
@@ -626,6 +634,12 @@ fi
 
 
 %changelog
+* Wed Jul 22 2026 Jason Rodriguez <jrodriguez@ciq.com> - 2:1.20.1-22.2.3
+- Fix CVE-2026-1642
+- Fix CVE-2026-27654
+- Fix CVE-2026-27651
+- Fix CVE-2026-27784
+
 * Mon May 25 2026 Pratham Patel <ppatel@ciq.com> - 1.20.1-22.1.3
 - Fix CVE-2026-42945 and CVE-2026-9256
 
