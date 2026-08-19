@@ -41,7 +41,7 @@
 Name:                 nginx
 Epoch:                2
 Version:              1.20.1
-Release:        22.3%{?dist}.3
+Release:        22.4%{?dist}.3
 
 Summary:              A high performance web server and reverse proxy server
 # BSD License (two clause)
@@ -126,6 +126,8 @@ Patch1005: nginx-1.20.1-CVE-2026-27651.patch
 Patch1006: nginx-1.20.1-CVE-2026-27784.patch
 # CVE-2026-42946 — upstream backport
 Patch1007: CVE-2026-42946.patch
+# CVE-2026-42055 — upstream backport
+Patch1008: nginx-1.20.1-CVE-2026-42055.patch
 
 BuildRequires:        make
 BuildRequires:        gcc
@@ -636,6 +638,9 @@ fi
 
 
 %changelog
+* Mon Aug 17 2026 Jason Rodriguez <jrodriguez@ciq.com> - 2:1.20.1-22.4.3
+- Fix CVE-2026-42055
+
 * Thu Jul 23 2026 Jason Rodriguez <jrodriguez@ciq.com> - 2:1.20.1-22.3.3
 - Fix CVE-2026-42946: heap buffer overread in ngx_http_scgi_module and ngx_http_uwsgi_module status line parsing
 
