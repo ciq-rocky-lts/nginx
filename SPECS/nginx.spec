@@ -41,7 +41,7 @@
 Name:                 nginx
 Epoch:                2
 Version:              1.20.1
-Release:        22.4%{?dist}.3
+Release:        22.5%{?dist}.3
 
 Summary:              A high performance web server and reverse proxy server
 # BSD License (two clause)
@@ -128,6 +128,10 @@ Patch1006: nginx-1.20.1-CVE-2026-27784.patch
 Patch1007: CVE-2026-42946.patch
 # CVE-2026-42055 — upstream backport
 Patch1008: nginx-1.20.1-CVE-2026-42055.patch
+# CVE-2026-60005 - adapted from github.com: https://github.com/nginx/nginx/commit/0cca8e055a2d909f1a00c2071665b502ec2fe94c.patch (hunk offsets adjusted for the target tree)
+Patch1009: nginx-1.20.1-CVE-2026-60005.patch
+# CVE-2026-32647 - verbatim from github.com: https://github.com/nginx/nginx/commit/a172c880cb51f882a5dc999437e8b3a4f87630cc.patch
+Patch1010: nginx-1.20.1-CVE-2026-32647.patch
 
 BuildRequires:        make
 BuildRequires:        gcc
@@ -638,6 +642,10 @@ fi
 
 
 %changelog
+* Tue Nov 10 2026 pmp <packager@ciq.com> - 2:1.20.1-22.5.3
+- Fix CVE-2026-60005
+- Fix CVE-2026-32647
+
 * Mon Aug 17 2026 Jason Rodriguez <jrodriguez@ciq.com> - 2:1.20.1-22.4.3
 - Fix CVE-2026-42055
 
