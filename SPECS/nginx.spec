@@ -41,7 +41,7 @@
 Name:                 nginx
 Epoch:                2
 Version:              1.20.1
-Release:        22.5%{?dist}.3
+Release:        22.6%{?dist}.3
 
 Summary:              A high performance web server and reverse proxy server
 # BSD License (two clause)
@@ -132,6 +132,14 @@ Patch1008: nginx-1.20.1-CVE-2026-42055.patch
 Patch1009: nginx-1.20.1-CVE-2026-60005.patch
 # CVE-2026-32647 - verbatim from github.com: https://github.com/nginx/nginx/commit/a172c880cb51f882a5dc999437e8b3a4f87630cc.patch
 Patch1010: nginx-1.20.1-CVE-2026-32647.patch
+# CVE-2026-42533 - Red Hat RHEL 9 Patch26 (c9s nginx-1.20.1-32, RHEL-212468): ABI-safe combination of upstream https://github.com/nginx/nginx/commit/ea47fabf55e2 7ac67898bdfe 326b17b00383 97e40e59b7b4 78950bdcd443
+Patch1011: nginx-1.20.1-CVE-2026-42533.patch
+# CVE-2026-97205 - upstream https://github.com/nginx/nginx/commit/6adfc05ece48f92446383ec1f145446848694698 as in RHEL 9.9 Patch27 (RHEL-285368; NGX_HTTP_MAX_BLOCKED in private ngx_http_request.hh)
+Patch1012: nginx-1.20.1-CVE-2026-97205.patch
+# CVE-2026-15176 - verbatim upstream https://github.com/nginx/nginx/commit/f8a23425bd6840c4c36b4264edf576ba3646156f (RHEL 9.9 Patch28, RHEL-284898)
+Patch1013: nginx-1.20.1-CVE-2026-15176.patch
+# CVE-2026-42533 - CIQ follow-up to Patch1011: save/restore the global script buffer end (and stream status) across nested evaluation
+Patch1014: nginx-1.20.1-CVE-2026-42533-nested-bounds.patch
 
 BuildRequires:        make
 BuildRequires:        gcc
@@ -642,6 +650,11 @@ fi
 
 
 %changelog
+* Fri Nov 13 2026 Jeff Uphoff <juphoff@ciq.com> - 2:1.20.1-22.6.3
+- Fix CVE-2026-42533
+- Fix CVE-2026-97205
+- Fix CVE-2026-15176
+
 * Tue Nov 10 2026 pmp <packager@ciq.com> - 2:1.20.1-22.5.3
 - Fix CVE-2026-60005
 - Fix CVE-2026-32647
