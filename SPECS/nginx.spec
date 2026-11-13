@@ -41,7 +41,7 @@
 Name:                 nginx
 Epoch:                2
 Version:              1.20.1
-Release:        22.6%{?dist}.3
+Release:        22.7%{?dist}.3
 
 Summary:              A high performance web server and reverse proxy server
 # BSD License (two clause)
@@ -140,6 +140,16 @@ Patch1012: nginx-1.20.1-CVE-2026-97205.patch
 Patch1013: nginx-1.20.1-CVE-2026-15176.patch
 # CVE-2026-42533 - CIQ follow-up to Patch1011: save/restore the global script buffer end (and stream status) across nested evaluation
 Patch1014: nginx-1.20.1-CVE-2026-42533-nested-bounds.patch
+# CVE-2026-56434 - verbatim from github.com: https://github.com/nginx/nginx/commit/700dc9e0e750e3f63587f9d0f9f36bae5ec47202.patch
+Patch1015: nginx-1.20.1-CVE-2026-56434.patch
+# CVE-2026-40701 - verbatim from github.com: https://github.com/nginx/nginx/commit/71841dcedfdf46048ef5e25413fdf97a66957913.patch
+Patch1016: nginx-1.20.1-CVE-2026-40701.patch
+# CVE-2026-42934 - verbatim from github.com: https://github.com/nginx/nginx/commit/696a7f1b9198d576e6a59c1655b746fbf06561cf.patch
+Patch1017: nginx-1.20.1-CVE-2026-42934.patch
+# CVE-2026-48142 - verbatim from github.com: https://github.com/nginx/nginx/commit/319a0bff157b15d9061f4712b2edbe6fdd2dee66.patch
+Patch1018: nginx-1.20.1-CVE-2026-48142.patch
+# CVE-2026-28753 - verbatim from github.com: https://github.com/nginx/nginx/commit/6f3145006b41a4ec464eed4093553a335d35e8ac.patch
+Patch1019: nginx-1.20.1-CVE-2026-28753.patch
 
 BuildRequires:        make
 BuildRequires:        gcc
@@ -650,6 +660,13 @@ fi
 
 
 %changelog
+* Fri Nov 13 2026 Jeff Uphoff <juphoff@ciq.com> - 2:1.20.1-22.7.3
+- Fix CVE-2026-56434
+- Fix CVE-2026-40701
+- Fix CVE-2026-42934
+- Fix CVE-2026-48142
+- Fix CVE-2026-28753
+
 * Fri Nov 13 2026 Jeff Uphoff <juphoff@ciq.com> - 2:1.20.1-22.6.3
 - Fix CVE-2026-42533
 - Fix CVE-2026-97205
