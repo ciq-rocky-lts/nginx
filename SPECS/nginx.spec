@@ -41,7 +41,7 @@
 Name:                 nginx
 Epoch:                2
 Version:              1.20.1
-Release:        22.7%{?dist}.3
+Release:        22.8%{?dist}.3
 
 Summary:              A high performance web server and reverse proxy server
 # BSD License (two clause)
@@ -150,6 +150,30 @@ Patch1017: nginx-1.20.1-CVE-2026-42934.patch
 Patch1018: nginx-1.20.1-CVE-2026-48142.patch
 # CVE-2026-28753 - verbatim from github.com: https://github.com/nginx/nginx/commit/6f3145006b41a4ec464eed4093553a335d35e8ac.patch
 Patch1019: nginx-1.20.1-CVE-2026-28753.patch
+# CVE-2026-123633 - adapted from github.com: https://github.com/nginx/nginx/commit/0c87dd1db413e440a4e3ef7ee8acc518509e8809.patch (hunk re-anchored for the 1.20.1 tree)
+Patch1020: CVE-2026-123633.patch
+# https://github.com/nginx/nginx/commit/30b8bf67e21f41fb81c9905c202bc4b7b8b1179b.patch
+Patch1021: CVE-2026-123640.patch
+# https://github.com/nginx/nginx/commit/d9fd14eb3eb4fc08a43b8ac7462ba9ed23caf958.patch
+Patch1022: CVE-2026-123640-dup-sni-alpn.patch
+# CVE-2026-118899 - adapted from github.com: https://github.com/nginx/nginx/commit/1b723277aa556ba4c6e40cc8f0f0b465e29c0a13.patch (hunk re-anchored for the 1.20.1 tree)
+Patch1023: CVE-2026-118899.patch
+# https://github.com/nginx/nginx/commit/e39708edc69a9c0c992b6af075db761946969534.patch
+Patch1024: CVE-2026-123634.patch
+# CVE-2026-123007 - adapted from github.com: https://github.com/nginx/nginx/commit/b89c4100bf6762a45e4a6463eaf4b70368277c94.patch (hunk re-anchored for the 1.20.1 tree)
+Patch1025: CVE-2026-123007.patch
+# https://github.com/nginx/nginx/commit/754fe68c2e0f698baf731666e71b7f2619c715ef.patch
+Patch1026: CVE-2026-113425.patch
+# https://github.com/nginx/nginx/commit/e2d23d45fa93ed236a9cdedcb54271e0a064c4f3.patch
+Patch1027: CVE-2026-113425-companion-block-writes.patch
+# https://github.com/nginx/nginx/commit/e505109a3f21074bf0414eb8241a37085d2da8cb.patch
+Patch1028: CVE-2026-113425-companion-send-quit.patch
+# https://github.com/nginx/nginx/commit/5deda780a9d5d1bcd5c6731d3118fa090ae900cc.patch
+Patch1029: CVE-2026-113425-companion-proxy-block-writes.patch
+# https://github.com/nginx/nginx/commit/4c5ace9f1d5419334a2e6772a0885ee7ed3d6e91.patch
+Patch1030: CVE-2026-113425-companion-smtp-resolve-writes.patch
+# https://github.com/nginx/nginx/commit/d1ffe6fa89fee120411dd4d37206c1482d869480.patch
+Patch1031: CVE-2026-125283.patch
 
 BuildRequires:        make
 BuildRequires:        gcc
@@ -660,6 +684,15 @@ fi
 
 
 %changelog
+* Thu Nov 19 2026 Pratham Patel <ppatel@ciq.com> - 2:1.20.1-22.8.3
+- Fix CVE-2026-123633
+- Fix CVE-2026-123640
+- Fix CVE-2026-118899
+- Fix CVE-2026-123634
+- Fix CVE-2026-123007
+- Fix CVE-2026-113425
+- Fix CVE-2026-125283
+
 * Fri Nov 13 2026 Jeff Uphoff <juphoff@ciq.com> - 2:1.20.1-22.7.3
 - Fix CVE-2026-56434
 - Fix CVE-2026-40701
