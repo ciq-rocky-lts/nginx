@@ -41,7 +41,7 @@
 Name:                 nginx
 Epoch:                2
 Version:              1.20.1
-Release:        22.4%{?dist}.3
+Release:        22.5%{?dist}.3
 
 Summary:              A high performance web server and reverse proxy server
 # BSD License (two clause)
@@ -130,6 +130,50 @@ Patch1007: CVE-2026-42946.patch
 Patch1008: nginx-1.20.1-CVE-2026-60005.patch
 # CVE-2026-42055 — upstream backport
 Patch1009: nginx-1.20.1-CVE-2026-42055.patch
+# CVE-2026-15176 - verbatim from Rocky Linux: https://git.rockylinux.org/staging/rpms/nginx/-/raw/1aed3372a98c0f6b8e7472049d17b58e40ac2e3d/SOURCES/0028-Avoid-post-rewrite-URI-to-path-mapping-with-alias.patch
+Patch1010: nginx-1.20.1-CVE-2026-15176.patch
+# CVE-2026-97205 - verbatim from Rocky Linux: https://git.rockylinux.org/staging/rpms/nginx/-/raw/1aed3372a98c0f6b8e7472049d17b58e40ac2e3d/SOURCES/0027-Limited-the-number-of-pending-operations-per-request.patch
+Patch1011: nginx-1.20.1-CVE-2026-97205.patch
+# CVE-2026-32647 - adapted from github.com: https://github.com/nginx/nginx/commit/a172c880cb51f882a5dc999437e8b3a4f87630cc.patch (index lines regenerated for the target tree)
+Patch1012: nginx-1.20.1-CVE-2026-32647.patch
+# CVE-2026-123633
+Patch1013: nginx-1.20.1-CVE-2026-123633.patch
+# CVE-2026-123007
+Patch1014: nginx-1.20.1-CVE-2026-123007.patch
+# CVE-2026-42533 - Red Hat RHEL 9 Patch26 (c9s nginx-1.20.1-32, RHEL-212468): ABI-safe combination of upstream https://github.com/nginx/nginx/commit/ea47fabf55e2 7ac67898bdfe 326b17b00383 97e40e59b7b4 78950bdcd443 [same patch as lts96-9]
+Patch1030: nginx-1.20.1-CVE-2026-42533.patch
+# CVE-2026-42533 - CIQ follow-up to Patch1030: save/restore the global script buffer end (and stream status) across nested evaluation [same patch file as lts96-9, where the main fix is Patch1011; the file header still says Patch1011]
+Patch1031: nginx-1.20.1-CVE-2026-42533-nested-bounds.patch
+# CVE-2026-56434 - verbatim from github.com: https://github.com/nginx/nginx/commit/700dc9e0e750e3f63587f9d0f9f36bae5ec47202.patch [same patch as lts96-9]
+Patch1032: nginx-1.20.1-CVE-2026-56434.patch
+# CVE-2026-40701 - verbatim from github.com: https://github.com/nginx/nginx/commit/71841dcedfdf46048ef5e25413fdf97a66957913.patch [same patch as lts96-9]
+Patch1033: nginx-1.20.1-CVE-2026-40701.patch
+# CVE-2026-42934 - verbatim from github.com: https://github.com/nginx/nginx/commit/696a7f1b9198d576e6a59c1655b746fbf06561cf.patch [same patch as lts96-9]
+Patch1034: nginx-1.20.1-CVE-2026-42934.patch
+# CVE-2026-48142 - verbatim from github.com: https://github.com/nginx/nginx/commit/319a0bff157b15d9061f4712b2edbe6fdd2dee66.patch [same patch as lts96-9]
+Patch1035: nginx-1.20.1-CVE-2026-48142.patch
+# CVE-2026-28753 - verbatim from github.com: https://github.com/nginx/nginx/commit/6f3145006b41a4ec464eed4093553a335d35e8ac.patch [same patch as lts96-9]
+Patch1036: nginx-1.20.1-CVE-2026-28753.patch
+# https://github.com/nginx/nginx/commit/30b8bf67e21f41fb81c9905c202bc4b7b8b1179b.patch
+Patch1015: nginx-1.20.1-CVE-2026-123640.patch
+# https://github.com/nginx/nginx/commit/d9fd14eb3eb4fc08a43b8ac7462ba9ed23caf958.patch
+Patch1016: nginx-1.20.1-CVE-2026-123640-dup-sni-alpn.patch
+# https://github.com/nginx/nginx/commit/e39708edc69a9c0c992b6af075db761946969534.patch
+Patch1017: nginx-1.20.1-CVE-2026-123634.patch
+# https://github.com/nginx/nginx/commit/754fe68c2e0f698baf731666e71b7f2619c715ef.patch
+Patch1018: nginx-1.20.1-CVE-2026-113425.patch
+# CVE-2026-113425 (companion, ngx_mail_send() sets handlers on s->quit) - nginx 1.30.7 commit (1.30 branch hash in patch header; mainline e505109a)
+Patch1020: nginx-1.20.1-CVE-2026-113425-mail-send-quit.patch
+# CVE-2026-113425 (companion, blocked client writes while waiting for auth_http) - nginx 1.30.7 commit (1.30 branch hash in patch header; mainline a22ab710)
+Patch1021: nginx-1.20.1-CVE-2026-113425-mail-block-writes-auth-http.patch
+# CVE-2026-113425 (companion, blocked client writes while connecting to upstream) - nginx 1.30.7 commit (1.30 branch hash in patch header; mainline 013ce187)
+Patch1022: nginx-1.20.1-CVE-2026-113425-mail-block-writes-upstream.patch
+# CVE-2026-113425 (companion, blocked client writes while resolving SMTP client) - nginx 1.30.7 commit (1.30 branch hash in patch header; mainline 1d1d861a)
+Patch1023: nginx-1.20.1-CVE-2026-113425-mail-block-writes-resolver.patch
+# CVE-2026-125283 - upstream https://github.com/nginx/nginx/commit/d1ffe6fa89fee120411dd4d37206c1482d869480.patch (applies after Patch1030, which brings the script-overrun hardening its context assumes)
+Patch1040: nginx-1.20.1-CVE-2026-125283.patch
+# CVE-2026-118899
+Patch1041: nginx-1.20.1-CVE-2026-118899.patch
 
 BuildRequires:        make
 BuildRequires:        gcc
@@ -640,6 +684,24 @@ fi
 
 
 %changelog
+* Mon Nov 16 2026 pmp <packager@ciq.com> - 2:1.20.1-22.5.3
+- Fix CVE-2026-15176
+- Fix CVE-2026-97205
+- Fix CVE-2026-32647
+- Fix CVE-2026-123633
+- Fix CVE-2026-123007
+- Fix CVE-2026-123640
+- Fix CVE-2026-123634
+- Fix CVE-2026-113425
+- Fix CVE-2026-125283
+- Fix CVE-2026-42533
+- Fix CVE-2026-56434
+- Fix CVE-2026-40701
+- Fix CVE-2026-42934
+- Fix CVE-2026-48142
+- Fix CVE-2026-28753
+- Fix CVE-2026-118899
+
 * Fri Sep 04 2026 Jason Rodriguez <jrodriguez@ciq.com> - 2:1.20.1-22.4.3
 - Fix CVE-2026-60005
 - Fix CVE-2026-42055
